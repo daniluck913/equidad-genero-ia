@@ -44,23 +44,32 @@
     <img id="header-image" src="logo.png" alt="Logotipo de la organización">
   </header>
 
+  <section id="initial-selection" role="region" aria-labelledby="selection-heading">
+    <h2 id="selection-heading">Seleccione el tipo de solución basada en IA que desea</h2>
+    <div class="btn-group" role="group" aria-labelledby="selection-heading">
+      <button id="btn-develop" class="btn btn-primary m-2" aria-label="Desarrollar una solución">Desarrollar
+        Solución</button>
+      <button id="btn-acquire" class="btn btn-secondary m-2" aria-label="Adquirir una solución">Adquirir Solución</button>
+    </div>
+  </section>
+
   <!-- Contenedor de preguntas -->
   <main id="main-content" class="my-4" role="main">
-    <section id="question-container" aria-labelledby="question-heading">
+    <section id="question-container" class="d-none" aria-labelledby="question-heading">
       <h2 id="question-heading">Cuestionario</h2>
       <p id="question-text">Cargando pregunta...</p>
       <div id="options" class="btn-group" role="group" aria-labelledby="question-text"></div>
     </section>
 
     <!-- Contenedor para la tabla con scroll -->
-    <section id="results-section" class="mt-4 border" aria-labelledby="results-heading">
+    <section id="results-section" class="mt-4 border d-none" aria-labelledby="results-heading">
       <h2 id="results-heading">Resultados</h2>
       <div id="table-container" role="region" aria-live="polite" aria-label="Tabla de resultados">
         <table class="table table-bordered mb-0">
           <thead class="table-dark">
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Fase del Ciclo de Vida</th>
+              <th scope="col">Fase</th>
               <th scope="col">Pregunta</th>
               <th scope="col">Respuesta</th>
               <th scope="col">Comentario</th>
@@ -76,6 +85,11 @@
       <button onclick="resetProcess()" class="btn btn-secondary" aria-label="Reiniciar el cuestionario">Reiniciar Proceso</button>
       <button onclick="undoLastStep()" class="btn btn-warning" aria-label="Deshacer el último paso">Deshacer Último Paso</button>
       <button onclick="printResults()" class="btn btn-primary" aria-label="Imprimir los resultados">Imprimir Resultados</button>
+    </div>
+
+    <!-- Botón de inicio -->
+    <div id="start-over-container" class="text-end mt-3 d-none">
+      <button onclick="goToStart()" class="btn btn-danger" aria-label="Volver al inicio">Inicio</button>
     </div>
   </main>
 
