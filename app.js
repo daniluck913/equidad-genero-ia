@@ -36,6 +36,7 @@ function bindSelectionEvents() {
     const questionContainer = document.getElementById('question-container');
     const startOverContainer = document.getElementById('start-over-container');
     const resultsSection = document.getElementById('results-section');
+    const actionButtons = document.getElementById('action-buttons');
     const questionHeading = document.getElementById('question-heading');
 
     // Actualizar el encabezado con la opción seleccionada
@@ -46,6 +47,7 @@ function bindSelectionEvents() {
     questionContainer.classList.remove('d-none'); // Mostrar el contenedor de preguntas
     startOverContainer.classList.remove('d-none'); // Mostrar botón de inicio
     resultsSection.classList.remove('d-none'); // Mostrar la sección de resultados
+    actionButtons.classList.remove('d-none'); // Mostrar los botones de acción
 
     fetchData(selectedPurpose); // Cargar preguntas según el propósito
   }
@@ -218,6 +220,7 @@ function goToStart() {
   const initialSelection = document.getElementById('initial-selection');
   const startOverContainer = document.getElementById('start-over-container');
   const resultsSection = document.getElementById('results-section');
+  const actionButtons = document.getElementById('action-buttons');
   const resultsTable = document.getElementById('results-table');
 
   // Ocultar secciones activas
@@ -225,6 +228,7 @@ function goToStart() {
   questionContainer.classList.add('d-none');
   startOverContainer.classList.add('d-none');
   resultsSection.classList.add('d-none');
+  actionButtons.classList.add('d-none'); // Ocultar botones de acción
 
   // Mostrar selección inicial
   initialSelection.classList.remove('d-none');

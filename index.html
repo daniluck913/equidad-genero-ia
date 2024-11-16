@@ -81,10 +81,13 @@
     </section>
 
     <!-- Botones de acción -->
-    <div class="text-end mt-3">
-      <button onclick="resetProcess()" class="btn btn-secondary" aria-label="Reiniciar el cuestionario">Reiniciar Proceso</button>
-      <button onclick="undoLastStep()" class="btn btn-warning" aria-label="Deshacer el último paso">Deshacer Último Paso</button>
-      <button onclick="printResults()" class="btn btn-primary" aria-label="Imprimir los resultados">Imprimir Resultados</button>
+    <div id="action-buttons" class="text-end mt-3 d-none">
+      <button onclick="resetProcess()" class="btn btn-secondary" aria-label="Reiniciar el cuestionario">Reiniciar
+        Proceso</button>
+      <button onclick="undoLastStep()" class="btn btn-warning" aria-label="Deshacer el último paso">Deshacer Último
+        Paso</button>
+      <button onclick="printResults()" class="btn btn-primary" aria-label="Imprimir los resultados">Imprimir
+        Resultados</button>
     </div>
 
     <!-- Botón de inicio -->
