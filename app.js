@@ -171,24 +171,6 @@ function updateProgressBar() {
   console.log('Barra de progreso actualizada:', progressPercentage + '%');
 }
 
-// Reiniciar proceso
-function resetProcess() {
-  console.log('Reiniciando el proceso...');
-  currentStepIndex = 0;
-
-  const table = document.getElementById('results-table');
-  if (table) {
-    table.innerHTML = '';
-    console.log('Tabla de resultados limpiada.');
-  } else {
-    console.error('No se encontró el elemento de tabla de resultados.');
-  }
-
-  updateProgressBar();
-  loadQuestion(currentStepIndex);
-  alert('El proceso ha sido reiniciado.');
-}
-
 // Deshacer el último paso
 function undoLastStep() {
   console.log('Deshaciendo el último paso...');
@@ -213,7 +195,7 @@ function undoLastStep() {
 }
 
 function goToStart() {
-  console.log('Volviendo a la pantalla inicial...');
+  console.log('Volviendo a la pantalla inicial y reiniciando el cuestionario...');
 
   const mainContent = document.getElementById('main-content');
   const questionContainer = document.getElementById('question-container');

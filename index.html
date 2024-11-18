@@ -29,6 +29,14 @@
       width: 400px; /* Tamaño ajustado al doble */
       max-width: 100%;
     }
+    @media (max-width: 768px) {
+      .header-container {
+        text-align: center;
+      }
+      #header-image {
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
 <body class="container my-4">
@@ -39,9 +47,10 @@
   <p id="progress-label" class="sr-only">Progreso del cuestionario</p>
 
   <!-- Contenedor para el título y el logo alineado -->
-  <header class="header-container" role="banner">
-    <h1>Árbol de Decisión para Mitigar Sesgos de Género en IA</h1>
-    <img id="header-image" src="logo.png" alt="Logotipo de la organización">
+  <header class="header-container d-flex flex-column flex-md-row justify-content-between align-items-center mb-4"
+    role="banner">
+    <h1 class="text-center text-md-start">Árbol de Decisión para Mitigar Sesgos de Género en IA</h1>
+    <img id="header-image" src="logo.png" alt="Logotipo de la organización" class="mb-3 mb-md-0">
   </header>
 
   <section id="initial-selection" role="region" aria-labelledby="selection-heading">
@@ -82,8 +91,6 @@
 
     <!-- Botones de acción -->
     <div id="action-buttons" class="text-end mt-3 d-none">
-      <button onclick="resetProcess()" class="btn btn-secondary" aria-label="Reiniciar el cuestionario">Reiniciar
-        Proceso</button>
       <button onclick="undoLastStep()" class="btn btn-warning" aria-label="Deshacer el último paso">Deshacer Último
         Paso</button>
       <button onclick="printResults()" class="btn btn-primary" aria-label="Imprimir los resultados">Imprimir
