@@ -259,7 +259,7 @@ function goToStart() {
 // Imprimir resultados de la tabla
 function printResults() {
     const printWindow = window.open('', '', 'height=500,width=800');
-    const tableContent = document.getElementById('table-container').innerHTML;
+    const tableContent = document.getElementById('table-container').innerHTML; 
 
     // Título dinámico basado en la opción seleccionada
     const title = `Resultados del Árbol de Decisión - ${selectedPurpose}`;
