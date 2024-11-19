@@ -40,7 +40,7 @@ function bindSelectionEvents() {
     const questionHeading = document.getElementById('question-heading');
 
     // Actualizar el encabezado con la opción seleccionada
-    questionHeading.textContent = `Cuestionario - ${selectedPurpose}`;
+    questionHeading.textContent = `Responda a cada pregunta asociada a la fase de ${selectedPurpose} IA`;
 
     initialSelection.classList.add('d-none'); // Ocultar selección inicial
     mainContent.classList.remove('d-none'); // Mostrar contenido principal
@@ -53,30 +53,39 @@ function bindSelectionEvents() {
   }
 }
 
-// Función para cargar datos desde el JSON según el propósito
-function fetchData(purpose) {
-  fetch('sesgos.json')
-    .then(response => {
-      if (!response.ok) {
-        console.error(`Error al cargar sesgos.json: ${response.statusText}`);
-        throw new Error(`Error al cargar el archivo JSON: ${response.statusText}`);
+// Función para cargar datos desde el archivo Excel según el propósito
+async function fetchData(purpose) {
+  try {
+      const response = await fetch('data.xlsx');
+      const arrayBuffer = await response.arrayBuffer();
+      const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+
+      const sheetName = "Árbol"; // Nombre exacto de la hoja en el archivo Excel
+      if (!workbook.SheetNames.includes(sheetName)) {
+          throw new Error(`La hoja "${sheetName}" no existe en el archivo Excel.`);
       }
-      return response.json();
-    })
-    .then(data => {
-      if (!data || !data.sesgos) {
-        throw new Error('El archivo JSON no contiene un formato válido.');
+
+      const sheet = workbook.Sheets[sheetName];
+      const data = XLSX.utils.sheet_to_json(sheet);
+
+      // Filtrar los datos según el propósito y asegurarse de que los datos estén en un formato esperado
+      steps = data.filter(row => row["Propósito"] === purpose);
+      if (!steps.length) {
+          throw new Error(`No se encontraron datos para el propósito: ${purpose}.`);
       }
-      steps = data.sesgos.filter(step => step.Propósito === purpose);
-      if (steps.length === 0) {
-        throw new Error('No hay datos disponibles para la selección realizada.');
-      }
-      console.log(`Datos cargados correctamente para ${purpose}:`, steps);
+
+      console.log(`Datos cargados correctamente (${steps.length} registros) para el propósito "${purpose}":`, steps);
       updateProgressBar();
       loadQuestion(0); // Cargar la primera pregunta
-    })
-    .catch(error => console.error('Error al cargar los datos:', error));
+  } catch (error) {
+      console.error('Error al cargar los datos desde Excel:', error.message || error);
+      alert('No se pudo cargar el archivo Excel. Verifique la conexión, el formato del archivo o el propósito especificado.');
+  }
 }
+
+
+
+
 
 // Función para cargar una pregunta específica
 function loadQuestion(index) {
@@ -109,7 +118,7 @@ function loadQuestion(index) {
 
 // Manejo de respuesta del usuario
 function handleAnswer(step, answer) {
-  const response = answer === "Sí" ? step["Opción Sí"] : step["Opción No"];
+  const response = answer === "Sí" ? step["Sí"] : step["No"];
   const table = document.getElementById('results-table');
 
   if (!table) {

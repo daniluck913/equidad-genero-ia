@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de buenas prácticas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="guia.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    
+
+    <!-- Filtro de búsqueda -->
+    <div class="container">
+
+        <!-- Propósito de la herramienta -->
+        <section id="tool-purpose" class="mb-4">
+            <div class="rounded-container p-3">
+                <p>
+                    Esta Guía de Buenas Prácticas proporciona orientación práctica y recomendaciones que permitan a los actores del ecosistema de IA abordar de manera efectiva los desafíos asociados con los sesgos de género. Su enfoque principal es promover la equidad de género en todas las etapas del desarrollo y la adopción de sistemas de IA.
+                </p>
+            </div>
+        </section>
+
+        <input type="text" id="searchInput" class="form-control my-3" placeholder="Filtrar prácticas...">
+    </div>
+
+    <!-- Contenedor principal para el contenido -->
+    <div class="container">
+        <div class="container">
+            <!-- Sección de Desarrollo -->
+            <h2 class="mt-4">Desarrollo de IA</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4" id="desarrollo"></div>
+        
+            <!-- Sección de Adopción -->
+            <h2 class="mt-4">Aadopción de IA</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4" id="adopcion"></div>
+        </div>        
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Detalle de la Práctica</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Imagen de la Práctica" class="img-fluid mb-3">
+                    <h5 id="modalTitle"></h5>
+                    <p id="modalDescription"></p>
+                    <p><strong>Fase:</strong> <span id="modalPhase"></span></p>
+                    <p><strong>Propósito:</strong> <span id="modalPurpose"></span></p>
+                    <p><strong>Ejemplo de Aplicación:</strong> <span id="modalExample"></span></p>
+                    <p><strong>Objetivo:</strong> <span id="modalObjective"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="guia.js"></script>
+    <script src="header.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

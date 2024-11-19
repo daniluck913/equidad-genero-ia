@@ -1,131 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Árbol de Decisión para Mitigar Sesgos de Género en IA</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    #table-container {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-    /* Encabezado fijo para la tabla */
-    #table-container thead th {
-      position: sticky;
-      top: 0;
-      background-color: #343a40;
-      color: white;
-      z-index: 1;
-    }
-    /* Estilo para alinear la imagen */
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    #header-image {
-      width: 400px; /* Tamaño ajustado al doble */
-      max-width: 100%;
-    }
-    @media (max-width: 768px) {
-      .header-container {
-        text-align: center;
-      }
-      #header-image {
-        margin: 0 auto;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirigiendo...</title>
+    <meta http-equiv="refresh" content="0;url=guia.html">
+    <script>
+        // Redirección con JavaScript como respaldo
+        document.addEventListener('DOMContentLoaded', () => {
+            window.location.href = 'guia.html';
+        });
+    </script>
 </head>
-<body class="container my-4">
-  <!-- Barra de progreso -->
-  <div class="progress mb-4" role="progressbar" aria-labelledby="progress-label">
-    <div id="progress-bar" class="progress-bar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-  </div>
-  <p id="progress-label" class="sr-only">Progreso del cuestionario</p>
-
-  <!-- Contenedor para el título y el logo alineado -->
-  <header class="header-container d-flex flex-column flex-md-row justify-content-between align-items-center mb-4"
-    role="banner">
-    <h1 class="text-center text-md-start">Árbol de Decisión para Mitigar Sesgos de Género en IA</h1>
-    <img id="header-image" src="logo.png" alt="Logotipo de la organización" class="mb-3 mb-md-0">
-  </header>
-
-  <section id="initial-selection" role="region" aria-labelledby="selection-heading">
-    <h2 id="selection-heading">Seleccione el tipo de solución basada en IA que desea</h2>
-    <div class="btn-group" role="group" aria-labelledby="selection-heading">
-      <button id="btn-develop" class="btn btn-primary m-2" aria-label="Desarrollar una solución">Desarrollar
-        Solución</button>
-      <button id="btn-acquire" class="btn btn-secondary m-2" aria-label="Adquirir una solución">Adquirir Solución</button>
-    </div>
-  </section>
-
-  <!-- Contenedor de preguntas -->
-  <main id="main-content" class="my-4" role="main">
-    <section id="question-container" class="d-none" aria-labelledby="question-heading">
-      <h2 id="question-heading">Cuestionario</h2>
-      <p id="question-text">Cargando pregunta...</p>
-      <div id="options" class="btn-group" role="group" aria-labelledby="question-text"></div>
-    </section>
-
-    <!-- Contenedor para la tabla con scroll -->
-    <section id="results-section" class="mt-4 border d-none" aria-labelledby="results-heading">
-      <h2 id="results-heading">Resultados</h2>
-      <div id="table-container" role="region" aria-live="polite" aria-label="Tabla de resultados">
-        <table class="table table-bordered mb-0">
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Fase</th>
-              <th scope="col">Pregunta</th>
-              <th scope="col">Respuesta</th>
-              <th scope="col">Comentario</th>
-            </tr>
-          </thead>
-          <tbody id="results-table"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Botones de acción -->
-    <div id="action-buttons" class="text-end mt-3 d-none">
-      <button onclick="undoLastStep()" class="btn btn-warning" aria-label="Deshacer el último paso">Deshacer Último
-        Paso</button>
-      <button onclick="printResults()" class="btn btn-primary" aria-label="Imprimir los resultados">Imprimir
-        Resultados</button>
-    </div>
-
-    <!-- Botón de inicio -->
-    <div id="start-over-container" class="text-end mt-3 d-none">
-      <button onclick="goToStart()" class="btn btn-danger" aria-label="Volver al inicio">Inicio</button>
-    </div>
-  </main>
-
-  <!-- Modal para mostrar información del sesgo -->
-  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <header class="modal-header">
-          <h2 id="infoModalLabel">Información del Sesgo Detectado</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </header>
-        <div class="modal-body">
-          <p><strong>Descripción del Sesgo:</strong></p>
-          <p id="modal-description"></p>
-          <p><strong>Herramienta Recomendada:</strong></p>
-          <p id="modal-tool"></p>
-        </div>
-        <footer class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </footer>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<body>
+    <p>Si no es redirigido automáticamente, haga clic <a href="guia.html">aquí</a>.</p>
 </body>
 </html>

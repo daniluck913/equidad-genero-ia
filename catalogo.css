@@ -1,0 +1,14 @@
+/* Estilo para las imágenes de las tarjetas */
+.card-img-top {
+    height: 150px;
+    object-fit: contain;
+    padding: 10px;
+    background-color: #f8f9fa; /* Fondo ligero para destacar la imagen */
+}
+
+/* Estilo para la descripción con scroll */
+.card-text {
+    max-height: 10em; /* Aproximadamente 10 líneas de texto */
+    overflow-y: auto;
+    text-overflow: ellipsis;
+}

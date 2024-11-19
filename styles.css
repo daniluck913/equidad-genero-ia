@@ -1,0 +1,40 @@
+#header-image {
+    max-height: 80px;
+}
+
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%; /* Asegura que el encabezado ocupe todo el ancho */
+    z-index: 1000;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    padding-top: 100px; /* Ajusta al tamaño exacto del encabezado */
+}
+
+/* Estilo para el encabezado flotante */
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustar el espacio para que el contenido no sea cubierto */
+.container {
+    margin-top: 20px; /* Ajustar al tamaño real del encabezado */
+}
+
+.rounded-container {
+    border: 2px solid #007bff; /* Color del borde */
+    border-radius: 15px; /* Bordes redondeados */
+    background-color: #f8f9fa; /* Fondo claro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar un efecto elevado */
+}
+
+

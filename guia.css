@@ -1,0 +1,71 @@
+/* Estilo para las tarjetas */
+.card {
+    height: 100%;
+}
+
+.card-body {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Animación suave para el contenido */
+.card-text {
+    max-height: 6em; /* Limita a 4 líneas aproximadamente */
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    text-align: justify; /* Justifica el texto */
+    transition: opacity 0.3s ease-in-out; /* Transición suave */
+    opacity: 1;
+}
+
+.card-text.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; /* Ocultar con transición suave */
+}
+
+.card-img-top {
+    max-height: 150px;
+    object-fit: contain;
+}
+
+/* Estilo base de la tarjeta */
+.card {
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+/* Estilo cuando se alterna el contenido */
+.card.alternate {
+    background-color: #f8f9fa; /* Fondo gris claro */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+    transform: rotateY(3deg); /* Rotación sutil */
+}
+
+/* Texto con animación de desvanecimiento */
+.card-text {
+    max-height: 6em; /* Limita a 4 líneas aproximadamente */
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    text-align: justify; /* Justifica el texto */
+    transition: opacity 0.3s ease-in-out; /* Transición para desvanecimiento */
+    opacity: 1;
+}
+
+.card-text.hidden {
+    opacity: 0; /* Ocultar con desvanecimiento */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Estilo para las imágenes en el modal */
+.modal-body img {
+    max-height: 150px; /* Misma altura que las imágenes en las tarjetas */
+    object-fit: contain; /* Ajusta la imagen sin deformarla */
+    width: 100%; /* Ajusta el ancho para que se mantenga proporcional */
+}
+
