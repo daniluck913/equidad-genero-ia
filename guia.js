@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Cargar el archivo Excel
     loadExcelFile();
 
-    // Asociar eventos
+    // Asociar eventos y configurar Select2
     setupEventListeners();
 });
 
@@ -24,6 +24,17 @@ async function loadExcelFile() {
         // Convertir la hoja a JSON
         guiaData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
+        // Cargar opciones únicas para el filtro de fases
+        const fasesUnicas = [...new Set(guiaData.map(item => item['Fase'] || '').filter(fase => fase))];
+        const phaseSelect = document.getElementById('phaseSelect');
+
+        fasesUnicas.forEach(fase => {
+            const option = document.createElement('option');
+            option.value = fase;
+            option.textContent = fase;
+            phaseSelect.appendChild(option);
+        });
+
         // Renderizar las tarjetas iniciales
         renderGuia(guiaData);
     } catch (error) {
@@ -32,21 +43,59 @@ async function loadExcelFile() {
     }
 }
 
-// Configurar los eventos
+// Configurar los eventos y Select2
 function setupEventListeners() {
     const searchInput = document.getElementById('searchInput');
+    const filterSelect = $('#filterSelect2'); // Select2 para objetivos
+    const phaseSelect = $('#phaseSelect');   // Select2 para fases
 
-    // Filtro de búsqueda
-    searchInput.addEventListener('input', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        const filteredData = guiaData.filter(item => {
-            // Buscar coincidencias en todas las columnas
-            return Object.values(item).some(value => 
-                value && value.toString().toLowerCase().includes(searchTerm)
-            );
-        });
-        renderGuia(filteredData);
+    // Inicializar Select2
+    filterSelect.select2({
+        placeholder: "Seleccione uno o más objetivos",
+        allowClear: true,
+        width: 'resolve'
     });
+
+    phaseSelect.select2({
+        placeholder: "Seleccione una o más fases",
+        allowClear: true,
+        width: 'resolve'
+    });
+
+    // Escucha cambios en el filtro de búsqueda
+    searchInput.addEventListener('input', applyFilters);
+
+    // Escucha cambios en los filtros múltiples
+    filterSelect.on('change', applyFilters);
+    phaseSelect.on('change', applyFilters);
+}
+
+// Aplicar filtros de búsqueda, objetivos y fases
+function applyFilters() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const selectedObjectives = $('#filterSelect2').val(); // Valores seleccionados de objetivos
+    const selectedPhases = $('#phaseSelect').val();       // Valores seleccionados de fases
+
+    // Filtra los datos
+    const filteredData = guiaData.filter(item => {
+        // Comprobar búsqueda
+        const matchesSearch = Object.values(item).some(value =>
+            value && value.toString().toLowerCase().includes(searchInput)
+        );
+
+        // Comprobar filtro múltiple contra la columna "Objetivo"
+        const objetivos = (item['Objetivo'] || '').split(',').map(obj => obj.trim());
+        const matchesObjectives = selectedObjectives.length === 0 || selectedObjectives.some(option => objetivos.includes(option));
+
+        // Comprobar filtro múltiple contra la columna "Fase"
+        const fase = item['Fase'] || '';
+        const matchesPhases = selectedPhases.length === 0 || selectedPhases.includes(fase);
+
+        // Combina todos los criterios
+        return matchesSearch && matchesObjectives && matchesPhases;
+    });
+
+    renderGuia(filteredData);
 }
 
 // Función para renderizar las tarjetas
@@ -98,8 +147,12 @@ function renderGuia(data) {
     if (!adopcionContainer.innerHTML) {
         adopcionContainer.innerHTML = '<p>No se encontraron buenas prácticas de Adopción.</p>';
     }
+
+    // Mostrar la cantidad de resultados en la consola
+    console.log(`Resultados encontrados: ${data.length}`);
 }
 
+// Mostrar detalles de una tarjeta en el modal
 function showDetails(index) {
     // Obtener el elemento correspondiente del array de datos
     const item = guiaData[index];
@@ -121,4 +174,3 @@ function showDetails(index) {
     const modal = new bootstrap.Modal(document.getElementById('infoModal'));
     modal.show();
 }
-
