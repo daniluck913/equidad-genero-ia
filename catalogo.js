@@ -36,6 +36,7 @@ function renderCatalog(data) {
 // Mostrar detalles en el modal
 function showDetails(index) {
     const item = catalogData[index];
+    console.log(item);
     document.getElementById('modalTitle').innerText = item['Herramienta'];
     document.getElementById('modalDescription').innerText = item['Descripción'];
     document.getElementById('modalCreator').innerText = item['Creador'];
