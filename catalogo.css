@@ -12,3 +12,28 @@
     overflow-y: auto;
     text-overflow: ellipsis;
 }
+
+.form-select {
+    width: 100%;
+    min-height: 38px;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+#modalImage {
+    width:100%;
+    /* Ajusta el ancho al 100% del contenedor */
+    max-width: 150px;
+    /* Tamaño máximo para evitar que sea demasiado grande */
+    height: auto;
+    /* Mantiene la proporción de la imagen */
+    object-fit: contain;
+    /* Ajusta el contenido dentro del contenedor */
+    display: block;
+    margin: 0 auto;
+    /* Centra la imagen en el modal */
+}
+
+
