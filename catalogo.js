@@ -134,14 +134,17 @@ function showDetails(toolName) {
         return;
     }
 
+    // Función para reemplazar punto y coma con comas
+    const formatText = (text) => text ? text.replace(/;/g, ',') : 'N/A';
+
     document.getElementById('modalTitle').innerText = item['Herramienta'];
     document.getElementById('modalDescription').innerText = item['Descripción'];
     document.getElementById('modalCreator').innerText = item['Creador'];
     document.getElementById('modalLicense').innerText = item['Licencia'];
-    document.getElementById('modalActor').textContent = item['Actor'];
-    document.getElementById('modalPhase').textContent = item['Fase del CV'];
-    document.getElementById('modalObjective').textContent = item['Objetivo'];
-    document.getElementById('modalToolType').textContent = item['Tipo de herramienta'];
+    document.getElementById('modalActor').textContent = formatText(item['Actor']);
+    document.getElementById('modalPhase').textContent = formatText(item['Fase del CV']);
+    document.getElementById('modalObjective').textContent = formatText(item['Objetivo']);
+    document.getElementById('modalToolType').textContent = formatText(item['Tipo de herramienta']);
     document.getElementById('modalImage').src = item['URL Imagen'];
     document.getElementById('modalURL').href = item['URL'];
 
