@@ -81,7 +81,7 @@ function initializeFilters(data) {
 function getUniqueOptions(data, columnName) {
     const options = data.flatMap(item => {
         if (item[columnName]) {
-            return item[columnName].split(',').map(opt => opt.trim()).filter(opt => /^[A-Z]/.test(opt));
+            return item[columnName].split(';').map(opt => opt.trim()).filter(opt => /^[A-Z]/.test(opt));
         }
         return [];
     });
@@ -99,13 +99,14 @@ function populateSelect(selector, items) {
     });
 }
 
-// Filtrar el catálogo
 function filterCatalog() {
+    // Obtener valores seleccionados de cada filtro
     const selectedActors = $('#filterActor').val() || [];
     const selectedPhases = $('#filterPhase').val() || [];
     const selectedObjectives = $('#filterObjective').val() || [];
     const selectedToolTypes = $('#filterToolType').val() || [];
 
+    // Filtrar los datos
     const filteredData = catalogData.filter(item => {
         const matchesActor = matchesFilter(item['Actor'], selectedActors);
         const matchesPhase = matchesFilter(item['Fase del CV'], selectedPhases);
@@ -114,13 +115,14 @@ function filterCatalog() {
         return matchesActor && matchesPhase && matchesObjective && matchesToolType;
     });
 
+    // Renderizar los resultados filtrados
     renderCatalog(filteredData);
 }
 
 // Comprobar si un elemento coincide con los filtros seleccionados
 function matchesFilter(itemValue, selectedOptions) {
     if (!itemValue) return selectedOptions.length === 0;
-    const itemOptions = itemValue.split(',').map(opt => opt.trim());
+    const itemOptions = itemValue.split(';').map(opt => opt.trim());
     return selectedOptions.length === 0 || selectedOptions.some(option => itemOptions.includes(option));
 }
 
