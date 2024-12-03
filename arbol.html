@@ -4,76 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Árbol de decisión</title>
+    <!-- Estilos -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="arbol.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        
         <!-- Propósito de la herramienta -->
         <section id="tool-purpose" class="mb-4">
             <div class="rounded-container p-3">
-            <h2 id="page-title" class="mb-0"></h2>
+                <h2 id="page-title" class="mb-0"></h2>
                 <p>
-                El Árbol de decisión es una herramienta interactiva que guía a los actores del ecosistema de IA en la identificación de riesgos asociados con sesgos de género. A través de preguntas clave y opciones de respuesta, proporciona recomendaciones específicas sobre acciones y herramientas para identificar, prevenir y mitigar estos riesgos, facilitando la toma de decisiones informadas en el desarrollo y adopción de sistemas de IA.
+                    El árbol de decisión es una herramienta interactiva diseñada para ayudar a los actores del ecosistema de inteligencia artificial (IA) a identificar, categorizar y gestionar riesgos asociados con sesgos de género en las soluciones de IA. A partir de preguntas clave y respuestas específicas, el árbol guía a los usuarios a través de un proceso lógico y estructurado para tomar decisiones informadas, implementar acciones preventivas y utilizar herramientas adecuadas.
                 </p>
             </div>
         </section>
 
+        <!-- Selector de Contexto -->
         <div class="bg-white rounded shadow p-4 mb-3">
-            <!-- Selector de Contexto -->
-           
-                <h2 class="h5 fw-semibold text-dark mb-3">
-                    ¿Desea desarrollar o adquirir una solución basada en inteligencia artificial (IA)?
-                </h2>
+            <div id="contextSelection">
+                <!-- Botón principal -->
+                <button id="contextButton" class="btn btn-primary btn-lg w-100">
+                    ¿Desea desarrollar o adquirir una solución basada en inteligencia artificial (IA)? Haga clic aquí para continuar.
+                </button>
+            </div>
+
+            <!-- Contenedor de los botones de contexto -->
+            <div id="optionsContainer" class="d-none">
                 <div class="d-flex justify-content-between gap-3">
-                    <button id="btnDesarrollo" onclick="setContext('desarrollo')" 
-                        class="btn btn-secondary btn-lg flex-fill">
+                    <button id="btnDesarrollo" class="btn btn-secondary btn-lg flex-fill">
                         Desarrollar de Solución de IA
                     </button>
-                    <button id="btnAdquisicion" onclick="setContext('adquisicion')" 
-                        class="btn btn-secondary btn-lg flex-fill">
+                    <button id="btnAdquisicion" class="btn btn-secondary btn-lg flex-fill">
                         Adquirir una Solución de IA
                     </button>
                 </div>
-        
-        </div>
-        
-        <div class="bg-white rounded shadow p-4 d-none" id="fases">
-            <!-- Etapas del Ciclo de Vida -->
-            <div class="col-md-12">
-               
-                    <h2 class="h5 fw-semibold text-dark mb-3">
-                        ¿Cuáles son los principales riesgos asociados a cada etapa y qué acciones o herramientas puede utilizar para mitigarlos?
-                    </h2>
-                    <div id="stagesContainer" class="d-grid gap-2">
-                        <!-- Stages will be dynamically populated -->
-                    </div>
-               
             </div>
-        </div>
 
-        <!-- Detalles de Etapa -->
-        <div id="stageDetails" class="mt-4 bg-white rounded shadow p-4 mb-3">
-            <h3 id="stageTitleElement" class="h5 fw-bold text-dark mb-3"></h3>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <h4 class="fw-bold text-danger">¿Cuáles son los riesgos potenciales?</h4>
-                    <ul id="risksList" class="list-unstyled text-danger"></ul>
-                </div>
-                <div class="col-md-6">
-                    <h4 class="fw-bold text-success">¿Cuáles son las acciones para prevenirlos y mitigarlos?</h4>
-                    <ul id="mitigationsList" class="list-unstyled text-success"></ul>
-                </div>
+            <!-- Contenedor de encabezado dinámico -->
+            <h2 id="contextHeader" class="h5 fw-semibold text-dark mb-3">
+                <!-- Mensaje dinámico será insertado aquí -->
+            </h2>
+
+            <!-- Contenedor de fases -->
+            <div id="fases" class="d-none">
+                <div id="stagesContainer"></div>
             </div>
+
+            <!-- Detalles de las fases -->
+            <div id="stageDetails" class="d-none">
+                <h3 id="stageTitleElement" class="h6 fw-bold"></h3>
+                <p><strong>¿Cuáles son los principales riesgos asociados?:</strong></p>
+                <ul id="risksList"></ul>
+                <p><strong>¿Qué debo considerar para prevenir o mitigar el riesgo de sesgos de género?;:</strong></p>
+                <ul id="mitigationsList"></ul>
+                <p><strong>¿Qué herramientas puedo utilizar para mitigarlos?:</strong></p>
+                <ul id="toolsList"></ul>
+            </div>
+
             <div class="mt-4">
-                <h4 class="fw-bold text-primary">¿Cuáles son las herramientas recomendadas?</h4>
-                <div id="toolsList" class="d-flex flex-wrap gap-2"></div>
+                <button id="resetButton" class="btn btn-danger btn-lg w-100">Reiniciar el árbol</button>
             </div>
+            
         </div>
-    </main>
+    </div>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="header.js" defer></script>
     <script src="arbol.js"></script>
