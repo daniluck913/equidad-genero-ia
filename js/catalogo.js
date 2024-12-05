@@ -2,7 +2,7 @@ let catalogData = []; // Variable para almacenar los datos cargados
 
 // Función para cargar el archivo Excel
 async function loadExcelFile() {
-    const response = await fetch('data.xlsx'); // Archivo en el mismo directorio
+    const response = await fetch('data/data.xlsx'); // Archivo en el mismo directorio
     const arrayBuffer = await response.arrayBuffer();
     const workbook = XLSX.read(arrayBuffer, { type: 'array' });
     const sheetName = workbook.SheetNames[1]; // Primera hoja

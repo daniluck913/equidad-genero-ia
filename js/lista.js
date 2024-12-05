@@ -56,7 +56,7 @@ function bindSelectionEvents() {
 // Función para cargar datos desde el archivo Excel según el propósito
 async function fetchData(purpose) {
   try {
-      const response = await fetch('data.xlsx');
+      const response = await fetch('data/data.xlsx');
       const arrayBuffer = await response.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, { type: 'array' });
 

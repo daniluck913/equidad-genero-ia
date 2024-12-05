@@ -25,7 +25,7 @@ const phases = {
 };
 
 // Cargar el archivo Excel
-fetch('data.xlsx')
+fetch('data/data.xlsx')
     .then(response => response.arrayBuffer())
     .then(data => {
         const workbook = XLSX.read(data, { type: 'array' });

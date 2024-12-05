@@ -11,7 +11,7 @@ let guiaData = []; // Datos de la guía cargados desde el Excel
 // Función para cargar el archivo Excel
 async function loadExcelFile() {
     try {
-        const response = await fetch('data.xlsx');
+        const response = await fetch('data/data.xlsx');
         const arrayBuffer = await response.arrayBuffer();
         const workbook = XLSX.read(arrayBuffer, { type: 'array' });
 
