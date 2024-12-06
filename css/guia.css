@@ -69,3 +69,18 @@
     width: 100%; /* Ajusta el ancho para que se mantenga proporcional */
 }
 
+#modalLink {
+    padding: 0.2rem 0.4rem; /* Reducir relleno */
+    font-size: 0.75rem; /* Tamaño de fuente pequeño */
+    line-height: 1; /* Reducir altura del texto */
+    border-radius: 3px; /* Bordes más sutiles */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#modalLink:hover {
+    border-color: #007bff; /* Borde azul más visible */
+    text-decoration: none;
+}
+
+
+

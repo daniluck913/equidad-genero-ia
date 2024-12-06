@@ -174,3 +174,34 @@ function showDetails(index) {
     const modal = new bootstrap.Modal(document.getElementById('infoModal'));
     modal.show();
 }
+// Mostrar detalles de una tarjeta en el modal
+function showDetails(index) {
+    // Obtener el elemento correspondiente del array de datos
+    const item = guiaData[index];
+
+    // Verificar si el elemento existe antes de intentar mostrar los datos
+    if (!item) {
+        console.error(`No se encontró el elemento en el índice ${index}`);
+        return;
+    }
+
+    // Asignar los valores al modal
+    document.getElementById('modalDescription').textContent = item['Descripción'] || 'Sin Descripción';
+    document.getElementById('modalPhase').textContent = item['Fase'] || 'Sin Fase';
+    document.getElementById('modalPurpose').textContent = item['Propósito'] || 'Sin Propósito';
+    document.getElementById('modalExample').textContent = item['Ejemplo de aplicación'] || 'Sin Ejemplo';
+    document.getElementById('modalObjective').textContent = item['Objetivo'] || 'Sin Objetivo';
+
+    // Manejar el botón de fuente del ejemplo
+    const modalLink = document.getElementById('modalLink');
+    if (item['Enlace']) {
+        modalLink.href = item['Enlace'];
+        modalLink.style.display = 'inline-block'; // Mostrar el botón
+    } else {
+        modalLink.style.display = 'none'; // Ocultar si no hay enlace
+    }
+
+    // Mostrar el modal usando Bootstrap
+    const modal = new bootstrap.Modal(document.getElementById('infoModal'));
+    modal.show();
+}

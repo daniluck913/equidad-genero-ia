@@ -3,16 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirigiendo...</title>
-    <meta http-equiv="refresh" content="0;url=guia.html">
-    <script>
-        // Redirección con JavaScript como respaldo
-        document.addEventListener('DOMContentLoaded', () => {
-            window.location.href = 'guia.html';
-        });
-    </script>
+    <title>Sesgos de genero en el desarrollo de la inteligencia artificial (IA)</title>
+    
+    <!-- CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <p>Si no es redirigido automáticamente, haga clic <a href="guia.html">aquí</a>.</p>
+
+    <!-- Contenido Principal -->
+    <main class="container my-5">
+
+     
+
+        <!-- Introducción -->
+        <section class="mb-4">
+            <div class="rounded-container p-3">
+                <section class="mb-4">
+                    <h2 id="page-title" class="mb-0 text-center"></h2>
+                </section>
+                <p>
+                    La inteligencia artificial (IA) es una tecnología transformadora que está redefiniendo la manera en que personas, organizaciones y gobiernos abordan desafíos en múltiples sectores. Sin embargo, su diseño e implementación deben realizarse de manera ética para evitar que perpetúe o amplifique desigualdades preexistentes, particularmente en términos de género.
+                </p>
+                <p>
+                    Por ello, resulta crucial establecer estrategias claras que permitan identificar, prevenir y mitigar los sesgos de género en el desarrollo y uso de sistemas de IA.
+                </p>
+                <p>
+                    En este contexto, el CONPES 4080 que establece la Política Pública de Equidad de Género para las Mujeres en Colombia, destaca la equidad de género como un pilar esencial del desarrollo sostenible. Dentro de este marco, el Departamento Nacional de Planeación (DNP) lideró la elaboración de una guía de buenas prácticas para mitigar los sesgos de género en la IA, promoviendo principios éticos y de justicia social (CONPES, 2022).
+                </p>
+                <p>
+                    Con un enfoque integral, la guía aborda todas las etapas del ciclo de vida de la IA, desde la planificación y el diseño hasta el monitoreo y el desmantelamiento, promoviendo sistemas inclusivos. También incorpora un Catálogo de Herramientas y un Árbol de Decisión como recursos prácticos para identificar y mitigar sesgos de género, facilitando su aplicación en diversos contextos.
+                </p>
+                <h2 class="mb-3">Público objetivo</h2>
+                <ul>
+                    <li>Equipos de desarrollo de IA</li>
+                    <li>Grupos de defensa de género</li>
+                    <li>Académicos e investigadores</li>
+                    <li>Empresas tecnológicas</li>
+                    <li>Reguladores y organismos gubernamentales</li>
+                    <li>Personas usuarias finales</li>
+                    <li>Medios de comunicación y periodistas tecnológicos</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sesgos en la IA -->
+        <section class="mb-4">
+            <div class="rounded-container p-3">
+                <h2 class="text-center mb-3">Principales Sesgos en la IA</h2>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Sesgos</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sesgo de datos</td>
+                            <td>
+                                Se presenta cuando los algoritmos se entrenan con datos no representativos, excluyendo las experiencias de mujeres y personas LGBTIQ+, lo cual genera decisiones sesgadas. En el ámbito de la salud, esto afecta diagnósticos y tratamientos al no considerar diferencias fisiológicas entre géneros (Buolamwini & Gebru, 2018). En el ámbito laboral, refuerza la preferencia por perfiles masculinos, perpetuando la exclusión de mujeres y minorías en ciertos roles históricos (O’Neil, 2016).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sesgo de confirmación</td>
+                            <td>
+                                Este sesgo ocurre cuando los algoritmos priorizan información que refuerza estereotipos preexistentes, como asociar roles laborales tradicionalmente masculinos a hombres. Esto perpetúa ideas preconcebidas en procesos de contratación y selección de personal (Buolamwini & Gebru, 2018).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sesgo de interacción</td>
+                            <td>
+                                La interacción de los sistemas de IA varía según el género, reflejando y reforzando estereotipos tradicionales en las respuestas de asistentes virtuales. Por ejemplo, los sistemas de IA como Alexa y Siri utilizan voces femeninas en roles serviles y voces masculinas en contextos autoritarios, lo cual contribuye a la idea tradicional de género asociada a la autoridad y el servicio (UNESCO, 2024).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sesgo de uso</td>
+                            <td>
+                                Las barreras estructurales dificultan el acceso equitativo de mujeres y personas LGBTIQ+ a los sistemas de IA. La falta de acceso a dispositivos tecnológicos y la exclusión en los datos de entrenamiento limitan las oportunidades de estos grupos para beneficiarse plenamente de los avances tecnológicos, lo que amplía las brechas de género existentes (UNESCO, 2024).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sesgo de retroalimentación</td>
+                            <td>
+                                Se produce cuando los resultados de un sistema de IA influyen en los datos futuros que procesará el mismo sistema, creando un ciclo que refuerza los sesgos preexistentes. Este ciclo amplifica las desigualdades en áreas como la contratación, donde se perpetúa la exclusión de las mujeres, o en salud, al no tener en cuenta sus necesidades específicas en los tratamientos y diagnósticos (Raji & Buolamwini, 2019).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sesgo contextual o de aplicación</td>
+                            <td>
+                                Aparece cuando los sistemas de IA se aplican en contextos diferentes a los previstos, generando discriminación de género al no ajustarse a las necesidades socioculturales específicas de mujeres y personas LGBTIQ+. Los algoritmos que no consideran diversas realidades socioculturales terminan exacerbando desigualdades y limitando la efectividad de los sistemas en diferentes entornos (O’Neil, 2016).
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/header.js" defer></script>
 </body>
 </html>

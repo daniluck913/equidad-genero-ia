@@ -2,21 +2,37 @@ let catalogData = []; // Variable para almacenar los datos cargados
 
 // Función para cargar el archivo Excel
 async function loadExcelFile() {
-    const response = await fetch('data/data.xlsx'); // Archivo en el mismo directorio
-    const arrayBuffer = await response.arrayBuffer();
-    const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-    const sheetName = workbook.SheetNames[1]; // Primera hoja
-    catalogData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-    
-    renderCatalog(catalogData);
-    initializeFilters(catalogData);
+    try {
+        const response = await fetch('data/data.xlsx'); // Asegúrate de que el archivo esté en la ubicación correcta
+        const arrayBuffer = await response.arrayBuffer();
+        const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+
+        // Especificar la hoja "Catálogo de herramientas"
+        const sheetName = "Catálogo de herramientas";
+        if (!workbook.SheetNames.includes(sheetName)) {
+            throw new Error(`La hoja "${sheetName}" no existe en el archivo Excel.`);
+        }
+
+        catalogData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+
+        console.log(catalogData); // Depuración: Verifica que los datos sean correctos
+
+        renderCatalog(catalogData);
+        initializeFilters(catalogData);
+    } catch (error) {
+        console.error('Error al cargar el archivo Excel:', error);
+    }
 }
 
 // Renderizar el catálogo
 function renderCatalog(data) {
+    console.log('Datos cargados:', data); // Verificar los datos cargados desde el Excel
     const catalogContainer = document.getElementById('catalogo');
     catalogContainer.innerHTML = ''; // Limpiar contenido previo
-    data.forEach((item, index) => {
+
+    data.forEach((item) => {
+        const year = item['Año'] ? item['Año'] : 'Año no especificado';
+        console.log('Año:', year); // Verificar cada valor de "Año"
         const card = `
             <div class="col-md-4 my-3 catalog-item">
                 <div class="card h-100">
@@ -24,7 +40,7 @@ function renderCatalog(data) {
                     <div class="card-body">
                         <h5 class="card-title">${item['Herramienta']}</h5>
                         <p class="card-text">${item['Descripción']}</p>
-                        <p><strong>Creador:</strong> ${item['Creador']}</p>
+                        <p><strong>Creador:</strong> ${item['Creador']}  <span class="badge bg-dark"">${year}</span> <!-- Badge para el año --> </p>
                         <p><strong>Licencia:</strong> ${item['Licencia']}</p>
                         <button class="btn btn-primary" onclick="showDetails('${item['Herramienta']}')">Ver más</button>
                     </div>
@@ -34,6 +50,7 @@ function renderCatalog(data) {
         catalogContainer.innerHTML += card;
     });
 }
+
 
 function initializeFilters(data) {
     // Extraer valores únicos para cada categoría dividiendo por comas y filtrando
@@ -50,7 +67,7 @@ function initializeFilters(data) {
 
     // Inicializar Select2 con diferentes placeholders
     $('#filterActor').select2({
-        placeholder: "Selecciona uno o más actores",
+        placeholder: "Selecciona público objetivo",
         allowClear: true,
         width: '100%' // Asegura que ocupe todo el contenedor
     });
@@ -134,11 +151,14 @@ function showDetails(toolName) {
         return;
     }
 
+    const year = item['Año'] ? item['Año'] : 'Año no especificado'; // Validar si el año existe
+
     // Función para reemplazar punto y coma con comas
     const formatText = (text) => text ? text.replace(/;/g, ',') : 'N/A';
 
     document.getElementById('modalTitle').innerText = item['Herramienta'];
     document.getElementById('modalDescription').innerText = item['Descripción'];
+    document.getElementById('modalYear').innerText = year; // Agregar el año al modal
     document.getElementById('modalCreator').innerText = item['Creador'];
     document.getElementById('modalLicense').innerText = item['Licencia'];
     document.getElementById('modalActor').textContent = formatText(item['Actor']);
@@ -150,6 +170,7 @@ function showDetails(toolName) {
 
     new bootstrap.Modal(document.getElementById('infoModal')).show();
 }
+
 
 // Filtrar el catálogo
 document.getElementById('searchInput').addEventListener('input', function () {

@@ -1,45 +1,74 @@
+/* ========= ENCABEZADO ========= */
+
+/* Estilo de la imagen del logotipo */
 #header-image {
-    max-height: 80px;
+    max-height: 80px; /* Limita la altura máxima del logotipo para mantener proporciones adecuadas */
 }
 
+/* Contenedor principal del encabezado */
 .header-container {
-    position: fixed;
-    top: 0;
-    width: 100%; /* Asegura que el encabezado ocupe todo el ancho */
-    z-index: 1000;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Mantiene el encabezado fijo al desplazarse */
+    top: 0; /* Posiciona el encabezado en la parte superior */
+    width: 100%; /* Asegura que el encabezado ocupe todo el ancho de la pantalla */
+    z-index: 1000; /* Garantiza que el encabezado esté por encima de otros elementos */
+    background-color: #f8f9fa; /* Fondo claro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para un efecto de elevación */
 }
 
+/* Ajusta el espacio superior del contenido para evitar que quede cubierto por el encabezado */
 body {
-    padding-top: 100px; /* Ajusta al tamaño exacto del encabezado */
+    padding-top: 100px; /* Crea un espacio superior igual al tamaño del encabezado */
 }
 
-/* Estilo para el encabezado flotante */
-.header-container {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+/* ========= CONTENEDORES Y BORDES ========= */
 
-/* Ajustar el espacio para que el contenido no sea cubierto */
+/* Ajuste del margen superior del contenido */
 .container {
-    margin-top: 20px; /* Ajustar al tamaño real del encabezado */
+    margin-top: 20px; /* Espaciado superior adicional */
 }
 
+/* Contenedores con bordes redondeados */
 .rounded-container {
-    border: 2px solid #007bff; /* Color del borde */
+    border: 2px solid #007bff; /* Borde azul */
     border-radius: 15px; /* Bordes redondeados */
     background-color: #f8f9fa; /* Fondo claro */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar un efecto elevado */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar un efecto de elevación */
 }
 
+/* Contenedor Select2 (si se utiliza en formularios personalizados) */
 .select2-container {
-    width: 100% !important;
+    width: 100% !important; /* Asegura que el contenedor ocupe todo el ancho disponible */
 }
 
+/* ========= PIE DE PÁGINA ========= */
 
+/* Contenedor del pie de página */
+.footer-container {
+    background-color: #f8f9fa; /* Fondo claro */
+    color: #6c757d; /* Texto gris */
+    border-top: 1px solid #dee2e6; /* Línea divisoria superior */
+}
 
+/* Botones en el pie de página */
+.footer-container .btn {
+    font-size: 0.85rem; /* Tamaño de texto reducido */
+    margin: 0 5px; /* Espaciado entre botones */
+}
+
+/* Botones secundarios (gris) en el pie de página */
+.footer-container .btn-outline-secondary {
+    color: #6c757d; /* Color de texto gris */
+    border-color: #ced4da; /* Borde gris claro */
+}
+
+/* Estilo de hover para botones secundarios */
+.footer-container .btn-outline-secondary:hover {
+    background-color: #e9ecef; /* Fondo más claro al pasar el mouse */
+    color: #495057; /* Texto más oscuro */
+}
+
+/* Botones adicionales (repetición eliminada) */
+.footer-container .btn {
+    font-size: 0.85rem;
+    margin: 0 5px;
+}
