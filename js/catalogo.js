@@ -15,8 +15,6 @@ async function loadExcelFile() {
 
         catalogData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
-        console.log(catalogData); // Depuración: Verifica que los datos sean correctos
-
         renderCatalog(catalogData);
         initializeFilters(catalogData);
     } catch (error) {
@@ -24,15 +22,24 @@ async function loadExcelFile() {
     }
 }
 
-// Renderizar el catálogo
-function renderCatalog(data) {
-    console.log('Datos cargados:', data); // Verificar los datos cargados desde el Excel
+// Función para renderizar el catálogo
+function renderCatalog(data, sortBy = 'name') {
+    const sortedData = [...data].sort((a, b) => {
+        if (sortBy === 'importance') {
+            const importanceA = Number(a['Importancia'] || 0);
+            const importanceB = Number(b['Importancia'] || 0);
+            if (importanceB !== importanceA) return importanceB - importanceA;
+            return (a['Herramienta'] || '').localeCompare(b['Herramienta'] || '');
+        } else {
+            return (a['Herramienta'] || '').localeCompare(b['Herramienta'] || '');
+        }
+    });
+
     const catalogContainer = document.getElementById('catalogo');
     catalogContainer.innerHTML = ''; // Limpiar contenido previo
 
-    data.forEach((item) => {
+    sortedData.forEach((item) => {
         const year = item['Año'] ? item['Año'] : 'Año no especificado';
-        console.log('Año:', year); // Verificar cada valor de "Año"
         const card = `
             <div class="col-md-4 my-3 catalog-item">
                 <div class="card h-100">
@@ -40,7 +47,11 @@ function renderCatalog(data) {
                     <div class="card-body">
                         <h5 class="card-title">${item['Herramienta']}</h5>
                         <p class="card-text">${item['Descripción']}</p>
-                        <p><strong>Creador:</strong> ${item['Creador']}  <span class="badge bg-dark"">${year}</span> <!-- Badge para el año --> </p>
+                        <p>
+                            <strong>Creador:</strong> ${item['Creador']} 
+                            <span class="badge bg-dark">${year}</span>
+                            ${item['Importancia'] ? generateStars(item['Importancia']) : ''}
+                        </p>
                         <p><strong>Licencia:</strong> ${item['Licencia']}</p>
                         <button class="btn btn-primary" onclick="showDetails('${item['Herramienta']}')">Ver más</button>
                     </div>
@@ -51,25 +62,37 @@ function renderCatalog(data) {
     });
 }
 
+// Función para generar estrellas de acuerdo con la importancia
+function generateStars(importance) {
+    const maxStars = 5;
+    const filledStars = Math.min(importance, maxStars);
+    let starsHTML = '';
+
+    for (let i = 1; i <= maxStars; i++) {
+        if (i <= filledStars) {
+            starsHTML += '<i class="fa fa-star text-warning"></i>'; // Estrella llena
+        } else {
+            starsHTML += '<i class="fa fa-star text-secondary"></i>'; // Estrella vacía
+        }
+    }
+    return `<div class="star-rating">${starsHTML}</div>`;
+}
 
 function initializeFilters(data) {
-    // Extraer valores únicos para cada categoría dividiendo por comas y filtrando
     const uniqueActors = getUniqueOptions(data, 'Actor');
     const uniquePhases = getUniqueOptions(data, 'Fase del CV');
     const uniqueObjectives = getUniqueOptions(data, 'Objetivo');
     const uniqueToolTypes = getUniqueOptions(data, 'Tipo de herramienta');
 
-    // Llenar las opciones de los filtros
     populateSelect('#filterActor', uniqueActors);
     populateSelect('#filterPhase', uniquePhases);
     populateSelect('#filterObjective', uniqueObjectives);
     populateSelect('#filterToolType', uniqueToolTypes);
 
-    // Inicializar Select2 con diferentes placeholders
     $('#filterActor').select2({
         placeholder: "Selecciona público objetivo",
         allowClear: true,
-        width: '100%' // Asegura que ocupe todo el contenedor
+        width: '100%'
     });
 
     $('#filterPhase').select2({
@@ -90,22 +113,35 @@ function initializeFilters(data) {
         width: '100%'
     });
 
-    // Escuchar cambios en los filtros
+    document.getElementById('sortTools').addEventListener('change', function() {
+        const sortBy = this.value;
+
+        const selectedActors = $('#filterActor').val() || [];
+        const selectedPhases = $('#filterPhase').val() || [];
+        const selectedObjectives = $('#filterObjective').val() || [];
+        const selectedToolTypes = $('#filterToolType').val() || [];
+
+        const filteredData = catalogData.filter(item => {
+            const matchesActor = matchesFilter(item['Actor'], selectedActors);
+            const matchesPhase = matchesFilter(item['Fase del CV'], selectedPhases);
+            const matchesObjective = matchesFilter(item['Objetivo'], selectedObjectives);
+            const matchesToolType = matchesFilter(item['Tipo de herramienta'], selectedToolTypes);
+            return matchesActor && matchesPhase && matchesObjective && matchesToolType;
+        });
+
+        renderCatalog(filteredData, sortBy);
+    });
+
     $('.form-select').on('change', filterCatalog);
 }
 
-// Función para obtener opciones únicas
 function getUniqueOptions(data, columnName) {
     const options = data.flatMap(item => {
-        if (item[columnName]) {
-            return item[columnName].split(';').map(opt => opt.trim()).filter(opt => /^[A-Z]/.test(opt));
-        }
-        return [];
+        return item[columnName] ? item[columnName].split(';').map(opt => opt.trim()) : [];
     });
     return [...new Set(options)];
 }
 
-// Función para llenar los select con opciones
 function populateSelect(selector, items) {
     const select = document.querySelector(selector);
     items.forEach(item => {
@@ -117,13 +153,12 @@ function populateSelect(selector, items) {
 }
 
 function filterCatalog() {
-    // Obtener valores seleccionados de cada filtro
     const selectedActors = $('#filterActor').val() || [];
     const selectedPhases = $('#filterPhase').val() || [];
     const selectedObjectives = $('#filterObjective').val() || [];
     const selectedToolTypes = $('#filterToolType').val() || [];
+    const sortBy = document.getElementById('sortTools').value;
 
-    // Filtrar los datos
     const filteredData = catalogData.filter(item => {
         const matchesActor = matchesFilter(item['Actor'], selectedActors);
         const matchesPhase = matchesFilter(item['Fase del CV'], selectedPhases);
@@ -132,62 +167,63 @@ function filterCatalog() {
         return matchesActor && matchesPhase && matchesObjective && matchesToolType;
     });
 
-    // Renderizar los resultados filtrados
-    renderCatalog(filteredData);
+    renderCatalog(filteredData, sortBy);
 }
 
-// Comprobar si un elemento coincide con los filtros seleccionados
 function matchesFilter(itemValue, selectedOptions) {
     if (!itemValue) return selectedOptions.length === 0;
     const itemOptions = itemValue.split(';').map(opt => opt.trim());
     return selectedOptions.length === 0 || selectedOptions.some(option => itemOptions.includes(option));
 }
 
-// Mostrar detalles en el modal
 function showDetails(toolName) {
+    // Buscar la herramienta correspondiente por su nombre
     const item = catalogData.find(data => data['Herramienta'] === toolName);
     if (!item) {
         console.error('Herramienta no encontrada');
         return;
     }
 
-    const year = item['Año'] ? item['Año'] : 'Año no especificado'; // Validar si el año existe
-
-    // Función para reemplazar punto y coma con comas
+    // Función auxiliar para formatear texto (reemplaza punto y coma con comas)
     const formatText = (text) => text ? text.replace(/;/g, ',') : 'N/A';
 
-    document.getElementById('modalTitle').innerText = item['Herramienta'];
-    document.getElementById('modalDescription').innerText = item['Descripción'];
-    document.getElementById('modalYear').innerText = year; // Agregar el año al modal
-    document.getElementById('modalCreator').innerText = item['Creador'];
-    document.getElementById('modalLicense').innerText = item['Licencia'];
-    document.getElementById('modalActor').textContent = formatText(item['Actor']);
-    document.getElementById('modalPhase').textContent = formatText(item['Fase del CV']);
-    document.getElementById('modalObjective').textContent = formatText(item['Objetivo']);
-    document.getElementById('modalToolType').textContent = formatText(item['Tipo de herramienta']);
-    document.getElementById('modalImage').src = item['URL Imagen'];
-    document.getElementById('modalURL').href = item['URL'];
+    // Asignar valores a los elementos del modal
+    document.getElementById('modalImage').src = item['URL Imagen'] || 'https://via.placeholder.com/150';
+    document.getElementById('modalImage').alt = `Imagen de ${item['Herramienta']}`;
+    document.getElementById('modalTitle').innerText = item['Herramienta'] || 'Título no disponible';
+    document.getElementById('modalDescription').innerText = item['Descripción'] || 'Descripción no disponible';
+    document.getElementById('modalCreator').innerText = item['Creador'] || 'No especificado';
+    document.getElementById('modalYear').innerText = item['Año'] || 'No especificado';
+    document.getElementById('modalLicense').innerText = item['Licencia'] || 'No especificada';
+    document.getElementById('modalActor').innerText = formatText(item['Actor']);
+    document.getElementById('modalPhase').innerText = formatText(item['Fase del CV']);
+    document.getElementById('modalObjective').innerText = formatText(item['Objetivo']);
+    document.getElementById('modalToolType').innerText = item['Tipo de herramienta'] || 'No especificada';
 
-    new bootstrap.Modal(document.getElementById('infoModal')).show();
+    // Configurar la URL del botón
+    const modalURL = document.getElementById('modalURL');
+    if (item['URL']) {
+        modalURL.href = item['URL'];
+        modalURL.style.display = 'inline-block'; // Mostrar el botón si hay URL
+    } else {
+        modalURL.href = '#';
+        modalURL.style.display = 'none'; // Ocultar el botón si no hay URL
+    }
+
+    // Mostrar el modal usando Bootstrap
+    const modal = new bootstrap.Modal(document.getElementById('infoModal'));
+    modal.show();
 }
 
 
-// Filtrar el catálogo
 document.getElementById('searchInput').addEventListener('input', function () {
     const searchTerm = this.value.toLowerCase();
     const filteredData = catalogData.filter(item =>
-        (item['Herramienta'] && item['Herramienta'].toLowerCase().includes(searchTerm)) ||
-        (item['Descripción'] && item['Descripción'].toLowerCase().includes(searchTerm)) ||
-        (item['Creador'] && item['Creador'].toLowerCase().includes(searchTerm)) ||
-        (item['Actor'] && item['Actor'].toLowerCase().includes(searchTerm)) ||
-        (item['Fase del CV'] && item['Fase del CV'].toLowerCase().includes(searchTerm)) ||
-        (item['Objetivo'] && item['Objetivo'].toLowerCase().includes(searchTerm)) ||
-        (item['Tipo de herramienta'] && item['Tipo de herramienta'].toLowerCase().includes(searchTerm))
+        Object.values(item).some(value =>
+            value && value.toString().toLowerCase().includes(searchTerm)
+        )
     );
     renderCatalog(filteredData);
 });
 
-
-// Cargar el archivo Excel al cargar la página
 window.onload = loadExcelFile;
-

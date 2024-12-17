@@ -6,6 +6,8 @@
     <title>Catálogo de herramientas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+
     <link rel="stylesheet" href="css/catalogo.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -40,14 +42,20 @@
                         <option value="" disabled>Seleccionar Fase del CV</option>
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <select id="filterObjective" class="form-select" multiple="multiple">
                         <option value="" disabled>Seleccionar Objetivo</option>
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <select id="filterToolType" class="form-select" multiple="multiple">
                         <option value="" disabled>Seleccionar Tipo de Herramienta</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select id="sortTools" class="form-select">
+                        <option value="name">Ordenar por Nombre</option>
+                        <option value="importance">Ordenar por Importancia</option>
                     </select>
                 </div>
             </div>
@@ -63,30 +71,55 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="infoModalLabel">Detalle de la herramienta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Encabezado de la modal -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="infoModalLabel">Detalle de la herramienta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <!-- Cuerpo de la modal -->
+            <div class="modal-body">
+                <!-- Imagen centrada -->
+                <div class="text-center mb-3">
+                    <img id="modalImage" src="" alt="Imagen de la herramienta" class="img-fluid mb-3" style="max-height: 200px; object-fit: contain;">
                 </div>
-                <div class="modal-body">
-                    <img id="modalImage" src="" alt="Imagen de la herramienta" class="img-fluid mb-3">
-                    <h5 id="modalTitle"></h5>
-                    <p id="modalDescription"></p>
-                    <p><strong>Creador:</strong> <span id="modalCreator"></span></p>
-                    <p><strong>Año:</strong> <span id="modalYear"></span></p> <!-- Agregamos el año -->
-                    <p><strong>Licencia:</strong> <span id="modalLicense"></span></p>
-                    <p><strong>Público objetivo:</strong> <span id="modalActor"></span></p>
-                    <p><strong>Fase(s) del ciclo de vida:</strong> <span id="modalPhase"></span></p>
-                    <p><strong>Objetivo:</strong> <span id="modalObjective"></span></p>
-                    <p><strong>Tipo de herramienta:</strong> <span id="modalToolType"></span></p>
+
+                <!-- Título -->
+                <h5 id="modalTitle" class="text-center mb-4"></h5>
+
+                <!-- Información en dos columnas -->
+                <div class="container">
+                    <div class="row">
+                        <!-- Columna 1 -->
+                        <div class="col-md-12">
+                            <p><strong>Descripción:</strong> <span id="modalDescription"></span></p>
+                            <p><strong>Creador:</strong> <span id="modalCreator"></span></p>
+                            <p><strong>Año:</strong> <span id="modalYear"></span></p>
+                            <p><strong>Licencia:</strong> <span id="modalLicense"></span></p>
+                        </div>
+                        <!-- Columna 2 -->
+                        <div class="col-md-12">
+                            <p><strong>Público objetivo:</strong> <span id="modalActor"></span></p>
+                            <p><strong>Fase(s) del ciclo de vida:</strong> <span id="modalPhase"></span></p>
+                            <p><strong>Objetivo:</strong> <span id="modalObjective"></span></p>
+                            <p><strong>Tipo de herramienta:</strong> <span id="modalToolType"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enlace al sitio oficial -->
+                <div class="text-center mt-4">
                     <a id="modalURL" href="#" target="_blank" class="btn btn-primary">Ir al sitio oficial</a>
                 </div>
-                
             </div>
+
         </div>
     </div>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

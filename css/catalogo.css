@@ -1,40 +1,70 @@
 /* Estilo para las imágenes de las tarjetas */
 .card-img-top {
-    height: 150px;
+    height: 160px; /* Imagen un poco más grande */
     object-fit: contain;
     padding: 10px;
-    background-color: #f8f9fa; /* Fondo ligero para destacar la imagen */
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
 }
 
-/* Estilo para la descripción con scroll */
+/* Estilo para la descripción con altura fija y scroll */
 .card-text {
-    max-height: 10em; /* Aproximadamente 10 líneas de texto */
-    overflow-y: auto;
-    text-overflow: ellipsis;
+    height: 120px; /* Altura fija más alta */
+    overflow-y: auto; /* Scroll vertical si el contenido excede */
+    line-height: 1.4em; /* Espaciado entre líneas */
+    font-size: 14px; /* Tamaño de fuente estándar */
+    color: #495057; /* Color del texto */
+    padding-right: 5px; /* Evita que el scroll tape el texto */
 }
 
-.form-select {
-    width: 100%;
-    min-height: 38px;
+/* Ajuste del contenedor de la tarjeta */
+.card {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-.select2-container {
-    width: 100% !important;
+/* Efecto de hover en las tarjetas */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón dentro de las tarjetas */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Estilo adicional para el título de las tarjetas */
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #212529;
+    margin-bottom: 10px;
 }
 
 #modalImage {
-    width:100%;
-    /* Ajusta el ancho al 100% del contenedor */
-    max-width: 150px;
-    /* Tamaño máximo para evitar que sea demasiado grande */
-    height: auto;
-    /* Mantiene la proporción de la imagen */
-    object-fit: contain;
-    /* Ajusta el contenido dentro del contenedor */
-    display: block;
-    margin: 0 auto;
-    /* Centra la imagen en el modal */
+    display: block;          /* Asegura que la imagen ocupe su propia línea */
+    margin: 0 auto;          /* Centra horizontalmente la imagen */
+    max-height: 120px;       /* Altura máxima para la imagen */
+    object-fit: contain;     /* Asegura que la imagen se ajuste sin perder proporción */
 }
 
+.modal-info-container {
+    display: flex; /* Usa flexbox para alinear los elementos en fila */
+    flex-wrap: wrap; /* Permite que los elementos salten a la siguiente línea si no hay espacio */
+    gap: 20px; /* Espacio entre los bloques */
+}
 
+.modal-info-item {
+    flex: 1; /* Hace que los elementos crezcan uniformemente */
+    min-width: 200px; /* Ancho mínimo para cada bloque */
+}
 
