@@ -13,10 +13,8 @@ markmap:
 
 ### Planificación y diseño 
 - ¿Las hipótesis iniciales o las suposiciones del proyecto han sido revisadas críticamente para evitar que influyan de manera sesgada en los datos o las decisiones? 
-
   - Si  
     - ¿El diseño del sistema considera cómo los usuarios podrían interactuar de manera sesgada hacia ciertos géneros, y se han implementado medidas para mitigar estos patrones? 
-  
       - Si
          - ¿El diseño de la interfaz o sistema contempla las necesidades y experiencias de todos los géneros, asegurando una experiencia inclusiva y equitativa?
            - Si
@@ -31,7 +29,6 @@ markmap:
                              - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como bajo o moderado. Se recomienda continuar implementando acciones proactivas para identificar, prevenir y mitigar posibles sesgos de género. Mantenga auditorías regulares, fomente la diversidad en su equipo de trabajo y utilice herramientas de análisis inclusivas para garantizar la equidad en el desarrollo o adquisición de su solución de IA.
                            - No
                              - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda involucrar a expertos en género, comunidades locales y otros actores relevantes para identificar necesidades específicas y cómo el sistema puede impactar a diferentes géneros en el contexto. Herramientas: [AI Fairness 360](https://aif360.readthedocs.io/en/stable/)
-
                        - No
                          - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar cómo el modelo aplica sus predicciones en el dominio específico, ajustar parámetros según las necesidades. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html)
                    - No
@@ -69,7 +66,6 @@ markmap:
                     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar críticamente las hipótesis iniciales con un panel diverso, realizar validaciones externas e incluir perspectivas inclusivas en las decisiones. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html), [AI Fairness 360](https://aif360.readthedocs.io/en/stable/)
               - No
                 - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda analizar los datos en busca de exclusiones intencionales o accidentales, incluir datos adicionales que reflejen mejor la diversidad de género y realizar auditorías de inclusión. Herramientas:  [Pandas Profiling](https://www.geeksforgeeks.org/pandas-profiling-in-python/), [Google Dataset Search](https://datasetsearch.research.google.com/help)
-
           - No
             - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda auditar los datos para identificar tendencias históricas sesgadas, reentrenar el modelo con datos actuales o ajustados y validar que los resultados reflejen equidad actual. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html), [AI Fairness 360](https://aif360.readthedocs.io/en/stable/)
       - No
@@ -101,17 +97,12 @@ markmap:
                             - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda realizar análisis cultural del modelo en el contexto específico, colaborar con expertos locales y ajustar los resultados para reflejar las dinámicas culturales. Herramientas:  [AI Fairness 360](https://aif360.readthedocs.io/en/stable/),  [Fairlearn](https://github.com/markmap/coc-markmap)
                       - No
                         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda realizar pruebas de transferencia en el nuevo contexto, ajustar los parámetros del modelo y validar que los resultados reflejen dinámicas de género locales. Herramientas:   [AI Fairness 360](https://aif360.readthedocs.io/en/stable/),  [Fairlearn](https://github.com/markmap/coc-markmap), [Aequitas](https://github.com/dssg/aequitas)
-
-
                   - No 
                     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda probar el modelo en escenarios específicos de género, ajustar parámetros para mejorar el desempeño en esos contextos y realizar validaciones periódicas. Herramientas: [What-If Tool](https://pair-code.github.io/what-if-tool/get-started/), [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html)
-
               - No 
                 - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda analizar los datos en busca de exclusiones intencionales o accidentales, incluir datos adicionales que reflejen mejor la diversidad de género y realizar auditorías de inclusión. Herramientas:  [Pandas Profiling](https://www.geeksforgeeks.org/pandas-profiling-in-python/), [Google Dataset Search](https://datasetsearch.research.google.com/help)
-
           - No 
             - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda auditar los datos para identificar tendencias históricas sesgadas, reentrenar el modelo con datos actuales o ajustados y validar que los resultados reflejen equidad actual. Herramietas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html), [AI Fairness 360](https://aif360.readthedocs.io/en/stable/)
-
       - No
         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar y ajustar los criterios de selección para garantizar neutralidad, así como auditar los datos seleccionados para identificar patrones sesgados. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html), [AI Fairness 360](https://aif360.readthedocs.io/en/stable/) 
   - No 
@@ -143,8 +134,6 @@ markmap:
                                             - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como bajo o moderado. Se recomienda continuar implementando acciones proactivas para identificar, prevenir y mitigar posibles sesgos de género. Mantenga auditorías regulares, fomente la diversidad en su equipo de trabajo y utilice herramientas de análisis inclusivas para garantizar la equidad en el desarrollo o adquisición de su solución de IA.
                                           - No 
                                             - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar los procesos de adaptación automática del sistema, establecer reglas para detectar adaptaciones sesgadas y ajustar el modelo según sea necesario. Herramientas: [Google AutoML](https://www-run-ai.translate.goog/guides/automl/google-automl?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es-419&_x_tr_pto=sc), [herramientas de MLOps](https://www.purestorage.com/knowledge/mlops-tools.html)
-
-
                                       - No
                                         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda analizar las predicciones para identificar amplificaciones no deseadas, reentrenar el modelo si se detectan patrones sesgados y validar los resultados con datos ajustados. Herramientas: [What-If Tool](https://pair-code.github.io/what-if-tool/get-started/), [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html)
                                   - No 
@@ -159,7 +148,6 @@ markmap:
                     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda realizar encuestas de satisfacción segmentadas por género, identificar barreras de acceso y mejorar el diseño para garantizar una experiencia inclusiva. Herramientas: [Qualtrics](https://www.qualtrics.com/es/plataforma/), [UserTesting](https://www-usertesting-com.translate.goog/)
               - No 
                 - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda monitorear las interacciones de los usuarios en tiempo real, ajustar las recomendaciones y resultados basados en patrones de uso y sensibilizar a los usuarios sobre interacciones responsables. Herramientas: [Fairness Indicators](https://github.com/tensorflow/fairness-indicators)
-
           - No
             - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar los resultados con observadores externos, usar explicabilidad para justificar decisiones de IA y detectar posibles sesgos en la interpretación. Herramientas:  [Fairlearn](https://github.com/markmap/coc-markmap), [Aequitas](https://github.com/dssg/aequitas)
       - No 
@@ -178,7 +166,6 @@ markmap:
             - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar las decisiones de implementación con un enfoque inclusivo, realizar auditorías técnicas y éticas y garantizar la participación de expertos en género. Herramientas: [Fairlearn](https://github.com/markmap/coc-markmap), [Aequitas](https://github.com/dssg/aequitas)
       - No
         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda evaluar el diseño con grupos diversos, realizar pruebas de usabilidad enfocadas en equidad de género y ajustar elementos de diseño para garantizar neutralidad. Herramientas:[UserZoom](https://www-usertesting-com.translate.goog/platform/userzoom?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es-419&_x_tr_pto=sc), [UserTesting](https://www-usertesting-com.translate.goog/)
-
   - No 
     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda realizar encuestas de satisfacción segmentadas por género, identificar barreras de acceso y mejorar el diseño para garantizar una experiencia inclusiva. Herramientas: [Qualtrics](https://www.qualtrics.com/es/plataforma/), [UserTesting](https://www-usertesting-com.translate.goog/)
 
@@ -196,7 +183,6 @@ markmap:
   - No 
     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Realizar auditorías para identificar qué grupos dependen del sistema y asegurar alternativas de acceso antes de la retirada. Herramientas:  [Aequitas](https://github.com/dssg/aequitas),  [Fairness Indicators](https://github.com/tensorflow/fairness-indicators)
     
-
 ## ¿Desea adquirir una IA? ¿En que fase se encuentra? 
 
 ### Planificación y análisis inicial 
@@ -228,14 +214,12 @@ markmap:
                                     - ¿El propósito del modelo se ha evaluado para garantizar que no genere impactos desproporcionados o perjudiciales para ciertos géneros?
                                       - Si
                                         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como bajo o moderado. Se recomienda continuar implementando acciones proactivas para identificar, prevenir y mitigar posibles sesgos de género. Mantenga auditorías regulares, fomente la diversidad en su equipo de trabajo y utilice herramientas de análisis inclusivas para garantizar la equidad en el desarrollo o adquisición de su solución de IA.
-                                
                                       - No 
                                         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Involucrar a expertos en género, comunidades locales y otros actores relevantes para identificar necesidades específicas y cómo el sistema puede impactar a diferentes géneros en el contexto. Herramientas: [AI Fairness 360](https://aif360.readthedocs.io/en/stable/)
                                   - No 
                                     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar cómo el modelo aplica sus predicciones en el dominio específico, ajustar parámetros según las necesidades. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html)
                               - No 
                                 - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda realizar análisis cultural del modelo en el contexto específico, colaborar con expertos locales y ajustar los resultados para reflejar las dinámicas culturales. Herramientas:  [AI Fairness 360](https://aif360.readthedocs.io/en/stable/),  [Fairlearn](https://github.com/markmap/coc-markmap)
-
                           - No
                             - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda realizar pruebas de transferencia en el nuevo contexto, ajustar los parámetros del modelo y validar que los resultados reflejen dinámicas de género locales. Herramientas:   [AI Fairness 360](https://aif360.readthedocs.io/en/stable/),  [Fairlearn](https://github.com/markmap/coc-markmap), [Aequitas](https://github.com/dssg/aequitas)
                       - No 
@@ -249,7 +233,6 @@ markmap:
             - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda auditar los datos para identificar tendencias históricas sesgadas, reentrenar el modelo con datos actuales o ajustados y validar que los resultados reflejen equidad actual. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html), [AI Fairness 360](https://aif360.readthedocs.io/en/stable/)
       - No 
         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar y ajustar los criterios de selección para garantizar neutralidad, así como auditar los datos seleccionados para identificar patrones sesgados. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html), [AI Fairness 360](https://aif360.readthedocs.io/en/stable/)
-
   - No
     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda realizar un análisis de distribución de datos para identificar grupos subrepresentados, ampliar la recolección de datos de fuentes diversas y aplicar técnicas de balanceo o re-pesado para corregir desbalances en los datos. Herramientas:  [Fairlearn](https://github.com/markmap/coc-markmap),  [Pandas Profiling](https://www.geeksforgeeks.org/pandas-profiling-in-python/),  [Aequitas](https://github.com/dssg/aequitas)
 
@@ -261,7 +244,6 @@ markmap:
         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como bajo o moderado. Se recomienda continuar implementando acciones proactivas para identificar, prevenir y mitigar posibles sesgos de género. Mantenga auditorías regulares, fomente la diversidad en su equipo de trabajo y utilice herramientas de análisis inclusivas para garantizar la equidad en el desarrollo o adquisición de su solución de IA.
       - No 
         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar las decisiones de implementación con un enfoque inclusivo, realizar auditorías técnicas y éticas y garantizar la participación de expertos en género. Herramientas: [Fairlearn](https://github.com/markmap/coc-markmap), [Aequitas](https://github.com/dssg/aequitas)
-
   - No 
     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda monitorear las interacciones de los usuarios en tiempo real, ajustar las recomendaciones y resultados basados en patrones de uso y sensibilizar a los usuarios sobre interacciones responsables. Herramientas: [Fairness Indicators](https://github.com/tensorflow/fairness-indicators)
 
