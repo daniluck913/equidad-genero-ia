@@ -9,7 +9,7 @@ markmap:
 ---
 
 # Árbol de decisión
-## ¿Desea desarrollar una solución basada en IA ¿En que fase se encuentra? 
+## ¿Desea desarrollar una solución basada en IA? ¿En qué fase se encuentra?
 
 ### Planificación y diseño 
 - ¿Las hipótesis iniciales o las suposiciones del proyecto han sido revisadas críticamente para evitar que influyan de manera sesgada en los datos o las decisiones? 
@@ -32,7 +32,7 @@ markmap:
                        - No
                          - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar cómo el modelo aplica sus predicciones en el dominio específico, ajustar parámetros según las necesidades. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html)
                    - No
-                     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto.Se recomienda realizar análisis cultural del modelo en el contexto específico, colaborar con expertos locales y ajustar los resultados para reflejar las dinámicas culturales. Herramientas: Análisis cualitativo con expertos, encuestas culturales, [What-If Tool](https://pair-code.github.io/what-if-tool/get-started/)
+                     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda realizar análisis cultural del modelo en el contexto específico, colaborar con expertos locales y ajustar los resultados para reflejar las dinámicas culturales. Herramientas: Análisis cualitativo con expertos, encuestas culturales, [What-If Tool](https://pair-code.github.io/what-if-tool/get-started/)
                - No 
                  - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda realizar auditorías de accesibilidad desde una perspectiva de género, implementar mejoras en el diseño y garantizar estándares de accesibilidad universal. Herramientas: [Aequitas](https://github.com/dssg/aequitas), [Fairness Indicators](https://github.com/tensorflow/fairness-indicators)
            - No 
@@ -102,7 +102,7 @@ markmap:
               - No 
                 - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda analizar los datos en busca de exclusiones intencionales o accidentales, incluir datos adicionales que reflejen mejor la diversidad de género y realizar auditorías de inclusión. Herramientas:  [Pandas Profiling](https://www.geeksforgeeks.org/pandas-profiling-in-python/), [Google Dataset Search](https://datasetsearch.research.google.com/help)
           - No 
-            - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda auditar los datos para identificar tendencias históricas sesgadas, reentrenar el modelo con datos actuales o ajustados y validar que los resultados reflejen equidad actual. Herramietas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html), [AI Fairness 360](https://aif360.readthedocs.io/en/stable/)
+            - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda auditar los datos para identificar tendencias históricas sesgadas, reentrenar el modelo con datos actuales o ajustados y validar que los resultados reflejen equidad actual. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html), [AI Fairness 360](https://aif360.readthedocs.io/en/stable/)
       - No
         - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Se recomienda revisar y ajustar los criterios de selección para garantizar neutralidad, así como auditar los datos seleccionados para identificar patrones sesgados. Herramientas: [Fairlearn](https://fairlearn.org/v0.11/api_reference/index.html), [AI Fairness 360](https://aif360.readthedocs.io/en/stable/) 
   - No 
@@ -183,7 +183,7 @@ markmap:
   - No 
     - De acuerdo con las opciones seleccionadas, su nivel de riesgo se clasifica como alto. Realizar auditorías para identificar qué grupos dependen del sistema y asegurar alternativas de acceso antes de la retirada. Herramientas:  [Aequitas](https://github.com/dssg/aequitas),  [Fairness Indicators](https://github.com/tensorflow/fairness-indicators)
     
-## ¿Desea adquirir una IA? ¿En que fase se encuentra? 
+## ¿Desea adquirir una IA? ¿En qué fase se encuentra?
 
 ### Planificación y análisis inicial 
 - ¿Los resultados del modelo están siendo interpretados de manera que eviten perpetuar estereotipos o ideas preconcebidas sobre roles de género?
